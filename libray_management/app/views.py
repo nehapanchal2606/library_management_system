@@ -36,9 +36,9 @@ class BookView(viewsets.ModelViewSet):
     
 class AuthorListAndCreateView(generics.ListCreateAPIView):
     queryset = Author.objects.all()
-    serailizer_class = AuthorSerializer
+    serializer_class = AuthorSerializer
     
-    def getpermissions(self):
+    def get_permissions(self):
         return [IsAuthenticated(), IsLibrarian()] if self.request.method == 'POST' else [AllowAny()]
     
         
